@@ -6,55 +6,99 @@
     <title>MyCV</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/menu.css' rel='stylesheet'>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+</head>
+<body>
     <nav>
         <div class="title_div">
-            <h2 class="title" >My Personal Curriculum Vitæ</h2>
+            <h2 class="title">Fábio Rocha</h2>
         </div>
-        
-        <a class="bot_nav" href="#experience"><h1>Experience</h1></a>
-        <a class="bot_nav" href="#education"><h1>Education</h1></a>
-        <a class="bot_nav" href="#about"><h1>About Me</h1></a>
-        <a class="bot_nav" id="home" href="#home"><h1>Home</h1></a>
+        <div class="tops">
+            <a href="#home" class="top">Home</a>
+            <a href="#about" class="top">About Me</a>
+            <a href="#education" class="top">Education</a>
+            <a href="#experience" class="top">Experience</a>
+        </div>
     </nav>
-</head>
-<body style="background-color:aliceblue;">
-    <div class="bod">
+    
+    <div class="box"> 
         <h1 class="name">Hi,<p></p> <span>I´m</span> Fábio Rocha</h1>
-        <a href="https://www.instagram.com/fabio_s_r/" class="fa fa-instagram" style="font-size: 300%; margin-left: 14%;"></a>
+        <div>
+            <img class="imagem" src="foto/foto1.png" alt="Fábio Rocha">
+        </div>
+        <a id="myBtn" class='fa fa-address-book' style="font-size: 250%; color: #551a8b; margin-left: 14%;"></a>
         <a href="https://www.linkedin.com/in/fabiorocha2004/" class="fa fa-linkedin" style="font-size: 300%;"></a>
         <a href="https://github.com/Fabi0290" class="fa fa-github" style="font-size: 300%;"></a>
-        <div class="imagem">
-            <img src="foto/foto1.png" alt="Fábio Rocha">
-        </div>
-        <h1 id="about" class="name2">About Me</h1>
-        <p class="center"> Olá, o meu nome é Fábio Rocha e sou um atual aluno de engenharia de redes e sistemas de computadores, em Viana do Castelo</p>
-        <h1 id="education" class="name2">Professional Summary</h1>
     </div>
 
+    <!--Modal de informaçõe pessoais-->
+    <div  id="myModal" class="Modal">
+        <div class="modal-content">
+            <p>Fábio Sebastião a Rocha</p>
+            <p>967502650</p>
+            <p>fabiosrocha29@hotmail.com</p>
+            <p>Portugal</p>
+
+            <span class="close"> &times; </span>
+                <!--Local do Modal-->
+        </div>
+        
+    </div>
+    
+    <div class="animate-on-hover">
+        <h1 id="about" class="name2">About Me</h1>
+        <p class="center">Olá, o meu nome é Fábio Rocha e sou um atual aluno de engenharia de redes e sistemas de computadores, em Viana do Castelo</p>
+    </div>
+    
+    <h1 id="education" class="name2">Professional Summary</h1>
 
     <script>
+
+        var modal=document.getElementById("myModal");
+        var btn=document.getElementById("myBtn");
+
+        //funcao para o botao
+        btn.onclick=function(){
+            modal.style.display="block";
+        }
+        var span = document.getElementsByClassName("close")[0];
+        //funcao para fechar o modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        //funcao para botoes do nav
         document.addEventListener("DOMContentLoaded", function() {
-        var links = document.querySelectorAll('a[href^="#"]');
-        
-        links.forEach(function(link) {
-            link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            var targetId = this.getAttribute('href').substring(1); // Remove o '#' do href
-            var targetElement = document.getElementById(targetId);
-            
-            if (targetElement) {
-                var offsetTop = targetElement.offsetTop;
-                
-                window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
+            var links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var targetId = this.getAttribute('href').substring(1); // Remove o '#' do href
+                    var targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        var offsetTop = targetElement.offsetTop;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
                 });
-      }
-    });
-  });
-});
-        
-        </script>
+            });
+        });
+    </script>
+
+    <footer class="contrape">
+        <div class="title2">
+            This page was built by me with HTML & CSS
+        </div>
+    </footer>
 </body>
 </html>
